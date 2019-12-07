@@ -1,0 +1,8 @@
+[submodule "utilities/builder"]
+	path = utilities/builder
+	url = https://github.com/midnight-wonderer/universal-stm8-builder.git
+	branch = master
+[submodule "vendor/stm8s"]
+	path = vendor/stm8s
+	url = https://github.com/the-cave/stm8s-header.git
+	branch = sdcc-patched
