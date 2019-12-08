@@ -8,8 +8,7 @@ static void (*data_received)(uint8_t data);
 static void (*overrun_detected)(void);
 static void (*data_error_detected)(void);
 
-void stm8s_uart1_transceiver__setup_receiver(
-    stm8sUart1Transceiver_ReceiverConfig* config) {
+void stm8s_uart1__setup_receiver(stm8sUart1_ReceiverConfig* config) {
   if (!config->data_received)
     return;
   UART1->CR1 |= UART1_CR1_PIEN | UART1_CR1_PCEN | UART1_CR1_M;
@@ -20,7 +19,7 @@ void stm8s_uart1_transceiver__setup_receiver(
   UART1->CR2 |= UART1_CR2_RIEN | UART1_CR2_REN;
 }
 
-INTERRUPT_HANDLER(stm8s_uart1_transceiver__receive_handler, ITC_IRQ_UART1_RX) {
+INTERRUPT_HANDLER(stm8s_uart1__receive_handler, ITC_IRQ_UART1_RX) {
   uint8_t status = UART1->SR;
   // no need to check here as we already checked before enable the interrupt
   // if (!data_received)
